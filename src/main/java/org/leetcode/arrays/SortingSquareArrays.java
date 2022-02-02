@@ -1,6 +1,5 @@
 package org.leetcode.arrays;
 
-import java.util.Arrays;
 import java.util.stream.IntStream;
 
 public class SortingSquareArrays {
