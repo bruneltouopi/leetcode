@@ -11,26 +11,51 @@ import java.util.List;
  */
 public class ArrayLeetodeChapter {
     public static void main(String[] args) {
-        int[] numbers=new int[]{1,0,2,3,0,4,5,0};
-        Utils.printArrayInt(duplicateZeros(numbers));
+        int[] numbers = new int[]{1, 0, 2, 3, 0, 4, 5, 0};
+        // Utils.printArrayInt(duplicateZeros(numbers));
     }
 
-    public static int[] duplicateZeros(int[] arr) {
-       int[] result=new int[arr.length];
-
-        int j = 0;
-        for (int i = 0; i < arr.length; i++,j++) {
-            if (arr[i] == 0 && i < arr.length - 1) {
-                result[j]=arr[i];
-                j++;
-                result[j]=arr[i];
-            } else if (arr[i] == 0 && i == arr.length - 1 || j== arr.length) {
-                break;
-            } else {
-                result[j]=arr[i];
+    public void duplicateZeros(int[] arr) {
+        int zeroes = 0;
+        for (int i : arr) {
+            if (i == 0) {
+                zeroes++;
             }
         }
-        arr=result;
-        return arr;
+        int i = arr.length - 1, j = arr.length + zeroes - 1;
+
+        while (i != j) {
+            insert(arr, i, j--);
+            if (arr[i] == 0) {
+                insert(arr, i, j--);
+            }
+            i--;
+        }
+    }
+
+    private void insert(int[] arr, int i, int j) {
+        if (j < arr.length) {
+            arr[j] = arr[i];
+        }
+    }
+
+    /******MERGE *****/
+    public void merge(int[] nums1, int m, int[] nums2, int n) {
+
+        for (int i=0;i<n;i++){
+            nums1[m+i]=nums2[i];
+        }
+        int temp=0;
+        for (int i = 0; i < n; i++) {
+            nums1[m+i]=nums2[i];
+            for (int j = i+1; j <nums1.length ; j++) {
+                if (nums1[i]>nums1[j]){
+                    temp=nums1[i];
+                    nums1[i]=nums1[j];
+                    nums1[j]=temp;
+                }
+            }
+        }
+
     }
 }
