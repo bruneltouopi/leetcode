@@ -1,4 +1,4 @@
-package org.leetcode.interviews.ms;
+package org.leetcode.interviews.ms.array_string;
 
 import java.util.HashMap;
 import java.util.Map;

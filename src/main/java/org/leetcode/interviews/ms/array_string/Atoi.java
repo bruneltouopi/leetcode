@@ -1,4 +1,4 @@
-package org.leetcode.interviews.ms;
+package org.leetcode.interviews.ms.array_string;
 
 /**
  * @author bruno-fabrice touopi
