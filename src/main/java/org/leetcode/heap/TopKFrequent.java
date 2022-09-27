@@ -2,10 +2,7 @@ package org.leetcode.heap;
 
 import org.leetcode.utils.Utils;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.PriorityQueue;
-import java.util.SortedMap;
+import java.util.*;
 
 /**
  * @author bruno-fabrice touopi
@@ -23,7 +20,7 @@ public class TopKFrequent {
         }
 
         PriorityQueue<Map.Entry<Integer,Integer>> maxheap = new PriorityQueue<>((o1, o2) -> o1.getValue()-o2.getValue());
-        countMap.entrySet().stream().forEach(entry -> {
+        countMap.entrySet().forEach(entry -> {
             maxheap.add(entry);
             if (maxheap.size() > k) {
                 maxheap.poll();
@@ -31,7 +28,7 @@ public class TopKFrequent {
         });
         int[] results = new int[k];
         for (int i = k-1; i >=0; i--) {
-            results[i] = maxheap.poll().getKey();
+            results[i] = Objects.requireNonNull(maxheap.poll()).getKey();
         }
 
         return results;
